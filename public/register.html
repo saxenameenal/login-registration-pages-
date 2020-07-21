@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        Register
+    </title>
+    <link rel="stylesheet" href="stylesheets/registerDesign.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Convergence' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <div class="image">
+        <div class="form">
+            <header>
+                Register
+            </header>
+
+            <form action="/index.html" method="get">
+                <button  class="btn"><i class="fa fa-close"></i></button>
+            </form>
+
+            <form action="/register" method="post">
+                <div class="box firstName" style="top:-15px">
+                    <span class="fa fa-user" >  </span>
+                    <input type="text" name="firstname" required placeholder="First Name" onchange="firstName()">
+                </div>
+                <div class="box lastName" style="top:-49px">
+                    <span class="fa fa-user" > </span>
+                    <input type="text" name="lastname" placeholder="Last Name" onchange="lastName()">
+                </div>
+                <div class="box email passW" style="top:-36px;">
+                    <span class="fas fa-envelope" > </span>
+                    <input type="text" name="email" required placeholder="Email" onchange="password()">
+                </div>
+                <div class="box moveUp" style="top:-70px;">
+                    <span class="fa fa-lock"  >  </span>
+                    <input type="password"  class="pass-key set" onchange="displayPassword" required placeholder="Password" style="height:35px;">
+                    <span class="show"> SHOW </span>
+                </div>
+                <div class="box space" style="top:-53px;">
+                    <span class="fa fa-lock">  </span>
+                    <input type="password" name="password_input" required placeholder="Re-type Password" style="height:35px;">
+                    <span class="show"> SHOW </span>
+                </div>
+
+                <label class="container" style="top:-32px;" >Employee
+                    <input type="radio" checked="checked" name="radio" value="0">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container" style="top:-25px;" >Manager
+                    <input type="radio" name="radio" value="1">
+                    <span class="checkmark"></span>
+                </label>
+
+                <div class="box space">
+                    <input type="submit" value="Register">
+                </div>
+                <div class="login" style="margin-top:20px; margin-bottom:10px"> Or sign up with </div>
+                <div class="link">
+                    <div class="facebook" style="margin-top:5px;">
+                        <i class="fab fa-facebook-f" > Facebook </i>
+                    </div>
+                    <div class="google" style="margin-top:5px;">
+                        <i class="fab fa-google"> Google </i>
+                    </div>
+                </div>
+                <div class="register" style="font-weight: 500;">
+                    Already have an account?
+                    <a href="log-in.html "> Log-in now!</a>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const pass_field = document.querySelector('.pass-key');
+        const showBtn = document.querySelector('.show');
+        showBtn.addEventListener('click', function(){
+        if(pass_field.type === "password"){
+           pass_field.type = "text";
+           showBtn.textContent = "HIDE";
+           showBtn.style.color = "#3498db";
+        }else{
+           pass_field.type = "password";
+           showBtn.textContent = "SHOW";
+           showBtn.style.color = "#222";
+        }
+        });
+    </script>
+
+</body>
+
+</html>

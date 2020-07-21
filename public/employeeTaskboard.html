@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" style=" overflow-x: hidden;">
+  <head>
+  	<title> Taskboard </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=RobotoCondensed' rel='stylesheet'>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+	<link rel="stylesheet" href="stylesheets/sidebar.css">
+	<link rel="stylesheet" href="stylesheets/taskboard.css">
+
+	<script src="javascripts/taskboard.js"> </script>
+
+ </head>
+ <body>
+
+	<div class="image wrapper d-flex align-items-stretch left" style="z-index:-1">
+		<nav id="sidebar" style="background-color: rgb(214, 198, 192);" >
+			<div class="custom-menu">
+        </div>
+	  		<div class="img bg-wrap text-center" style="background-color: rgb(214, 198, 192);"  >
+	  			<div class="user-logo" style="background-color: rgb(214, 198, 192);">
+	  				<div class="img" style="background-color: rgb(214, 198, 192);" ></div>
+	  				<h3 style="font-size: 26px;"> Welcome Employee! <br style="color:white; font-size:20px;"> </h3>
+	  			</div>
+	  		</div>
+        <ul class="list-unstyled components mb-5 fonts" style="font-size:40px;">
+
+          <li class="active">
+            <a href="managerTaskboard.html#tasks"><span class="fa fa-tasks"></span> All Tasks </a>
+          </li>
+          <li class="active">
+            <a href="managerTaskboard.html#availability"><span class="fa fa-edit"></span> Availability </a>
+          </li>
+          <li class="active">
+            <a href="managerTaskboard.html#settings"><span class="fa fa-cog mr-3"></span> Settings </a>
+          </li>
+          <li class="active">
+            <a href="index.html"><span class="fa fa-sign-out mr-3" onclick="logOut()" ></span> Sign Out </a>
+          </li>
+        </ul>
+        <div class="date">
+          <script>
+            //weekday
+            var myDate = new Date();
+            var myDay = myDate.getDay();
+            // Array of days.
+            var weekday = ['Sunday', 'Monday', 'Tuesday',
+              'Wednesday', 'Thursday', 'Friday', 'Saturday'
+            ];
+            document.write("         " + weekday[myDay]);
+            document.write("<br/>");
+
+            //date
+            var d=new Date();
+            var date=d.getDate();
+            var month=d.getMonth()+1;
+            var year=d.getFullYear();
+            var time = date+"/"+month+"/"+year;
+            document.write("   " + time);
+            document.write("<br/>");
+
+            //time
+            var hours = myDate.getHours();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            var minutes = myDate.getMinutes();
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            var myTime = hours + " " + " : " + minutes + " " + ampm;
+            document.write("            " + myTime);
+
+          </script>
+        </div>
+    	</nav>
+	</div>
+
+  <!-- Page Content  -->
+
+  <div class="right" id="tasks">
+    <div style="margin-left:-29px;">
+      <h2> Tasks </h2>
+
+
+      <form action="get" method="post">
+        <section >
+        <table id="dataTable" class = "table;">
+		      <tr>
+			      <!-- <td><input type="checkbox" name="chk" /></td>  -->
+			      <td><input type="text" name="txt" placeholder="Task Name" style="margin-left:10px;" />  </td>
+			      <td><input type="text" name="txt" class="size" placeholder="Task Description" style="margin-left:20px; margin-right:15px;" /> </td>
+
+			      <td>
+			        <input type="text" name="txt" placeholder="Project Deadline" style="margin-left:10px;" />
+
+			       </td>
+			      <td>
+
+			        <select name = "status" class="status" >
+			          <option selected disabled>Status</option>
+                <option value="ac">In Progress</option>
+                <option value="">Completed</option>
+			        </select>
+
+			      </td>
+	        </tr>
+	      </table>
+        </section>
+      </form>
+    </div>
+
+    <div>
+      <h2 style="margin-top:370px;" id="availability"> Availability </h2>
+      <h5 style="margin-left:82px; margin-bottom:-27px;"> From: </h5> <h5 style="margin-left:190px;"> To: </h5>
+
+      <table  class = "table;">
+		      <tr>
+		        <th class="write;" >Monday </th>
+		        <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+            <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+	        </tr>
+	         <tr>
+	           <th>Tuesday </th>
+		        <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+            <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+	        </tr>
+	         <tr>
+	           <th>Wednesday </th>
+		        <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+            <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+	        </tr>
+	        <tr>
+	          <th>Thursday </th>
+		        <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+            <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+	        </tr>
+	        <tr>
+	          <th>Friday </th>
+		        <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+            <td> <input type="time" class="time;" min="09:00" max="18:00" > </td>
+	        </tr>
+	      </table>
+	       <input type="button" class="button" value="Save" style="margin-left:130px;" />
+    </div>
+
+    <div>
+      <h2 style="margin-top:570px;" id="settings"> Settings </h2>
+      <section>
+        <button class="button" style="margin-left:10px;"> Edit Account Details </button>
+        <button class="button" style="margin-left:10px;"> Delete account </button>
+        <button class="button" style="margin-left:10px;" onclick="nightmode()" > Nightmode </button>
+      </section>
+    </div>
+
+    <div>
+      <h6 class="copyright"> © Copyright Task Rostering, 2020  </h6>
+    </div>
+
+  </div>
+
+
+</body>
+</html>

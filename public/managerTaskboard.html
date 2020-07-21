@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" style=" overflow-x: hidden;">
+  <head>
+  	<title> Taskboard </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=RobotoCondensed' rel='stylesheet'>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="stylesheets/sidebar.css">
+	<link rel="stylesheet" href="stylesheets/taskboard.css">
+
+	<script src="javascripts/taskboard.js"> </script>
+
+  </head>
+
+	<div class="image wrapper d-flex align-items-stretch left" style="z-index:-1">
+		<nav id="sidebar" style="background-color: rgb(214, 198, 192);" >
+			<div class="custom-menu">
+        </div>
+	  		<div class="img bg-wrap text-center" style="background-color: rgb(214, 198, 192);"  >
+	  			<div class="user-logo" style="background-color: rgb(214, 198, 192);">
+	  				<div class="img color" ></div>
+	  				<h3 style="font-size: 26px;"> Welcome Manager! <br style="color:white;"> </h3>
+	  			</div>
+	  		</div>
+        <ul class="list-unstyled components mb-5 fonts" style="font-size:40px;">
+          <li class="active">
+            <a href="managerTaskboard.html#tasks"><span class="fa fa-tasks" ></span> Tasks </a>
+          </li>
+          <li class="active">
+            <a href="managerTaskboard.html#employees"><span class="fa fa-user"></span> Employees </a>
+          </li>
+          <li class="active">
+            <a href="managerTaskboard.html"><span class="fa fa-users" ></span> Groups </a>
+          </li>
+          <li class="active">
+            <a href="managerTaskboard.html#settings"><span class="fa fa-cog mr-3"></span> Settings </a>
+          </li>
+          <li class="active">
+            <a href="index.html"><span class="fa fa-sign-out mr-3" onclick="logOut()" ></span> Sign Out </a>
+          </li>
+        </ul>
+        <div class="date">
+          <script>
+            //weekday
+            var myDate = new Date();
+            var myDay = myDate.getDay();
+            // Array of days.
+            var weekday = ['Sunday', 'Monday', 'Tuesday',
+              'Wednesday', 'Thursday', 'Friday', 'Saturday'
+            ];
+            document.write("         " + weekday[myDay]);
+            document.write("<br/>");
+
+            //date
+            var d=new Date();
+            var date=d.getDate();
+            var month=d.getMonth()+1;
+            var year=d.getFullYear();
+            var time = date+"/"+month+"/"+year;
+            document.write("   " + time);
+            document.write("<br/>");
+
+            //time
+            var hours = myDate.getHours();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            var minutes = myDate.getMinutes();
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            var myTime = hours + " " + " : " + minutes + " " + ampm;
+            document.write("            " + myTime);
+
+          </script>
+        </div>
+    	</nav>
+	</div>
+
+  <!-- Page Content  -->
+
+  <div class="right" id="tasks">
+    <div style="margin-left:-70px;">
+      <h2> Tasks </h2>
+
+      <form>
+        <input type="button" class="button" value="Add Task" onclick="addRow('dataTable')" />
+        <input type="button" class="button des" value="Delete Task/s" onclick="deleteRow('dataTable')" />
+        <h6 style="color:black; margin-top:9px; margin-left:425px;"> Task Deadline </h6>
+        <section>
+        <table id="dataTable" class="table;" style="display:inline-block;">
+		      <tr>
+			      <td><input style="margin-left:10px;" type="checkbox" name="chk" /></td>
+			      <td><input type="text" name="txt" placeholder="Task Name" style="margin-left:10px;" /></td>
+            <td> <textarea placeholder="Task Description" name="txt" class="tasks" cols="30" rows="2"></textarea> </td>
+			      <td><input type="date" id="start" name="trip-start" value="2020-06-29" min="2020-06-01" max="2020-12-31" class="datee" /> </td>
+
+            <td>
+              <div class="" style="margin-left:18px;" >
+				        <select name="employee" class="hell status;">
+				          <option selected disabled>Assigned Employee</option>
+					        <option value="in"> Alice </option> <!-- insert names through database-->
+					        <option value="de"> Jack </option>
+					        <option value="fr"> Katie </option>
+					        <option value="us">  Peter </option>
+				        </select>
+				      </div>
+
+            </td>
+            <td>
+            <input type="button" class="button" value="Save" style="margin-left:18px;" />
+
+            </td>
+	        </tr>
+	      </table>
+        </section>
+      </form>
+    </div>
+
+    <div >
+      <h2 style="margin-top:370px;" id="employees"> Employees </h2>
+      <section>
+        <h6 style="color:black; margin-top:9px; margin-left:418px;"> Employee Status </h6>
+      <form>
+        <section >
+        <table  class = "table;">
+		      <tr>
+			      <!--insert employee details from data base-->
+			      <td><input type="text" name="txt" style="margin-left:10px;" value="Alice Smith" /></td>
+			      <td><input type="text" name="txt" class="size" style="margin-left:20px; margin-right:15px;" value="alicesmith@gmail.com " /></td>
+			      <td>
+
+			        <select name = "status" class="status" >
+			          <option> Status </option>
+                <option selected disabled> Occupied </option>
+                <option value=""> Available </option>
+                <option value=""> On Leave </option>
+			        </select>
+
+			      </td>
+			      <td>
+
+			        <select name = "availability" class="status" >
+			          <option selected disabled> Availability </option>
+			        </select>
+
+			      </td>
+	        </tr>
+
+	        <tr>
+			      <!--insert employee details from data base-->
+			      <td><input type="text" name="txt" style="margin-left:10px;" value="Jack Nguyen" /></td>
+			      <td><input type="text" name="txt" class="size" style="margin-left:20px; margin-right:15px;" value="jacknguyen@gmail.com " /></td>
+			      <td>
+
+			        <select name = "status" class="status" >
+			          <option> Status </option>
+                <option > Occupied </option>
+                <option selected disabled> Available </option>
+                <option> On Leave </option>
+			        </select>
+
+			      </td>
+			      <td>
+
+			        <select name = "availability" class="status" >
+			          <option selected disabled> Availability </option>
+
+			        </select>
+
+			      </td>
+	        </tr>
+
+	        <tr>
+			      <!--INSERT employee details from database-->
+			      <td><input type="text" name="txt" style="margin-left:10px;" value="Katie Ryan" /></td>
+			      <td><input type="text" name="txt" class="size" style="margin-left:20px; margin-right:15px;" value="katieryan@gmail.com " /></td>
+			      <td>
+
+			        <select name = "status" class="status" >
+			          <option> Status </option>
+                <option selected disabled> Occupied </option>
+                <option value=""> Available </option>
+                <option value=""> On Leave </option>
+			        </select>
+
+			      </td>
+			      <td>
+
+			        <select name = "availability" class="status" >
+			          <option selected disabled> Availability </option>
+
+			        </select>
+
+			      </td>
+	        </tr>
+
+	        <tr>
+			      <!--insert employee details from data base-->
+			      <td><input type="text" name="txt" style="margin-left:10px;" value="Peter Johnson" /></td>
+			      <td><input type="text" name="txt" class="size" style="margin-left:20px; margin-right:15px;" value="peterjohnson@yahoo.com " /></td>
+			      <td>
+
+			        <select name = "status" class="status" >
+			          <option> Status </option>
+                <option > Occupied </option>
+                <option value=""> Available </option>
+                <option selected disabled> On Leave </option>
+			        </select>
+
+			      </td>
+			      <td>
+
+			        <select name = "availability" class="status" >
+			          <option selected disabled> Availability </option>
+
+			        </select>
+
+			      </td>
+	        </tr>
+	      </table>
+        </section>
+      </form>
+      </section>
+    </div>
+
+    <div>
+      <h2 style="margin-top:470px;" id="settings"> Settings </h2>
+      <section>
+        <button class="button" style="margin-left:10px;"> Edit Account Details </button>
+        <button class="button" style="margin-left:10px;"> Delete account </button>
+        <button class="button" style="margin-left:10px;" onclick="nightmode()" > Nightmode </button>
+      </section>
+    </div>
+
+    <div style="margin-top:570px;>
+      <h6 style="text-align: center; margin-top:670px; color:black;" id="bye"> © Copyright Task Rostering, 2020  </h6>
+    </div>
+
+  </div>
+
+</body>
+</html>
